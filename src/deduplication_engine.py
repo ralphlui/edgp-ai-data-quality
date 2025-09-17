@@ -25,6 +25,10 @@ class DeduplicationEngine:
     def __init__(self, dynamodb_service=None):
         """Initialize the deduplication engine."""
         self.dynamodb_service = dynamodb_service or DynamoDBService()
+        
+        # Ensure OpenAI configuration is initialized
+        config.initialize_openai_config()
+        
         self.llm = ChatOpenAI(
             model=config.OPENAI_MODEL,
             temperature=0,
