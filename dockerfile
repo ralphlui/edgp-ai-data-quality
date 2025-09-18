@@ -1,5 +1,5 @@
 # Use official Python image
-FROM python:3.13.5-slim
+FROM python:3.12-slim
 
 # Set environment variables
 ENV PYTHONDONTWRITEBYTECODE=1
@@ -14,9 +14,10 @@ COPY . .
 
 # Install system dependencies (build tools + lib for numpy/pandas/etc.)
 RUN apt-get update && apt-get install -y \
-    build-essential \
-    gcc \
-    g++ \
+    libffi-dev \
+    libssl-dev \
+    curl \
+    git \
     && rm -rf /var/lib/apt/lists/*
 
 # Install dependencies
