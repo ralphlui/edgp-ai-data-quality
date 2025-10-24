@@ -108,7 +108,6 @@ def format_record_for_gpt(record: CustomerRecord) -> str:
             f"Country: {record.country}, "
             f"Address: {record.address}, "
             f"Gender: {record.gender}, "
-            f"Status: {record.status}, "
             f"Organization ID: {record.organization_id}")
 def create_gpt_prompt(new_record: CustomerRecord, candidates: List[CustomerRecord]) -> str:
     """
@@ -138,7 +137,7 @@ Perform a comprehensive semantic analysis to determine if the new customer recor
 
 - Personal Identity: FirstName, LastName, Age, Gender
 - Contact Information: Email, Phone, Address, Country
-- Organizational Data: Organization ID, Status
+- Organizational Data: Organization ID
 - Unique Identifiers: ID
 
 Look for:
@@ -193,7 +192,7 @@ INSTRUCTIONS:
 Analyze all fields comprehensively:
 - Personal Identity: FirstName, LastName, Age, Gender
 - Contact Information: Email, Phone, Address, Country  
-- Organizational Data: Organization ID, Status
+- Organizational Data: Organization ID
 
 Find the ONE candidate that is most likely to be the same person as the new record. Consider:
 1. Multiple field matches indicating same identity

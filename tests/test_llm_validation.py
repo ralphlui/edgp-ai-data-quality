@@ -27,7 +27,7 @@ class TestLLMPromptGeneration:
             firstname="John", lastname="Smith", age=35,
             email="john.smith@example.com", phone="+1-555-0123",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         candidates = [
@@ -35,13 +35,13 @@ class TestLLMPromptGeneration:
                 firstname="Jon", lastname="Smyth", age=36,
                 email="jon.smyth@company.com", phone="+1-555-9999",
                 country="Canada", address="456 Oak Ave", gender="Male",
-                status="active", id=uuid4(), organization_id=uuid4()
+                id=uuid4(), organization_id=uuid4()
             ),
             CustomerRecord(
                 firstname="Jane", lastname="Smith", age=28,
                 email="jane.smith@email.com", phone="+1-555-7777",
                 country="USA", address="789 Pine St", gender="Female",
-                status="active", id=uuid4(), organization_id=uuid4()
+                id=uuid4(), organization_id=uuid4()
             )
         ]
         
@@ -195,7 +195,7 @@ class TestModelDataIntegrity:
             firstname="Test", lastname="User", age=25,
             email="test@example.com", phone="+1-555-0000",
             country="USA", address="123 Test St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         assert 0 < valid_record.age < 150  # Reasonable age range

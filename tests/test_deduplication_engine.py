@@ -46,7 +46,7 @@ class TestDeduplicationEngine:
             country="USA", 
             address="123 Main St, Anytown",
             gender="Male",
-            status="active",
+            
             id=uuid4(),
             organization_id=uuid4(),
             policy_id=uuid4(),
@@ -90,7 +90,7 @@ class TestDeduplicationEngine:
             country="USA",
             address="123 Main St, Anytown", 
             gender="Male",
-            status="active",
+            
             id=uuid4(),
             organization_id=sample_customer_record.organization_id,  # Same org
             policy_id=uuid4(),
@@ -112,7 +112,6 @@ class TestDeduplicationEngine:
             'country': similar_record.country,
             'address': similar_record.address,
             'gender': similar_record.gender,
-            'status': similar_record.status,
             'id': str(similar_record.id),
             'organization_id': str(similar_record.organization_id)
         }]
@@ -137,7 +136,7 @@ class TestDeduplicationEngine:
             country="Canada",
             address="456 Oak Ave, Different City",
             gender="Male",
-            status="active",
+            
             id=uuid4(),
             organization_id=uuid4(),
             policy_id=uuid4(),
@@ -166,7 +165,6 @@ class TestDeduplicationEngine:
             'country': different_record.country,
             'address': different_record.address,
             'gender': different_record.gender,
-            'status': different_record.status,
             'id': str(different_record.id),
             'organization_id': str(different_record.organization_id)
         }]
@@ -221,7 +219,6 @@ class TestDeduplicationEngine:
                 'country': 'USA',
                 'address': '456 Oak St',
                 'gender': 'Female',
-                'status': 'active',
                 'id': str(uuid4()),
                 'organization_id': str(uuid4())
             }  # Valid candidate
@@ -252,7 +249,7 @@ class TestDeduplicationEngine:
             country="USA",
             address="123 Main St, Anytown",
             gender="Male",
-            status="active",
+            
             id=uuid4(),
             organization_id=sample_customer_record.organization_id  # Same org
         )
@@ -274,7 +271,7 @@ class TestDeduplicationEngine:
             country="Canada",
             address="789 Different St",
             gender="Female",
-            status="active",
+            
             id=uuid4(),
             organization_id=uuid4()  # Different org
         )
@@ -304,7 +301,7 @@ class TestDeduplicationEngine:
             country="USA",
             address="456 Oak St",
             gender="Female",
-            status="active",
+            
             id=uuid4(),
             organization_id=uuid4()
         )
@@ -339,7 +336,7 @@ class TestDeduplicationEngine:
             country="USA",
             address="456 Oak St",
             gender="Female",
-            status="active",
+            
             id=uuid4(),
             organization_id=uuid4()
         )

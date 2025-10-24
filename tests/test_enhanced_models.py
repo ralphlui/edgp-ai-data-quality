@@ -37,7 +37,6 @@ class TestModelValidation:
             "country": "USA",
             "address": "123 Main St, Anytown, NY 10001",
             "gender": "Male",
-            "status": "active",
             "id": uuid4(),
             "organization_id": uuid4()
         }
@@ -82,7 +81,6 @@ class TestModelValidation:
         assert record.country == valid_customer_data["country"]
         assert record.address == valid_customer_data["address"]
         assert record.gender == valid_customer_data["gender"]
-        assert record.status == valid_customer_data["status"]
         assert isinstance(record.id, UUID)
         assert isinstance(record.organization_id, UUID)
     
@@ -179,13 +177,13 @@ class TestLLMOutputFormatValidation:
                 firstname="John", lastname="Smith", age=35,
                 email="john.smith@example.com", phone="+1-555-0123",
                 country="USA", address="123 Main St", gender="Male",
-                status="active", id=uuid4(), organization_id=uuid4()
+                id=uuid4(), organization_id=uuid4()
             ),
             CustomerRecord(
                 firstname="Jon", lastname="Smyth", age=36,
                 email="jon.smyth@company.com", phone="+1-555-9999",
                 country="Canada", address="456 Oak Ave", gender="Male",
-                status="active", id=uuid4(), organization_id=uuid4()
+                id=uuid4(), organization_id=uuid4()
             )
         ]
     
@@ -359,14 +357,14 @@ class TestLLMAccuracyAndDecisionLogic:
             firstname="John", lastname="Smith", age=35,
             email="john.smith@example.com", phone="+1-555-0123",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         record2 = CustomerRecord(
             firstname="John", lastname="Smith", age=35,
             email="john.smith@example.com", phone="+1-555-0123",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Mock LLM response indicating high confidence duplicate
@@ -396,14 +394,14 @@ class TestLLMAccuracyAndDecisionLogic:
             firstname="John", lastname="Smith", age=35,
             email="john.smith@example.com", phone="+1-555-0123",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         record2 = CustomerRecord(
             firstname="Jane", lastname="Doe", age=28,
             email="jane.doe@different.com", phone="+1-555-9999",
             country="Canada", address="456 Oak Ave", gender="Female",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Mock LLM response indicating low confidence (not duplicate)
@@ -433,14 +431,14 @@ class TestLLMAccuracyAndDecisionLogic:
             firstname="Robert", lastname="Johnson", age=45,
             email="robert.johnson@example.com", phone="+1-555-1234",
             country="USA", address="789 Pine St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         record2 = CustomerRecord(
             firstname="Bob", lastname="Johnson", age=45,
             email="bob.johnson@example.com", phone="+1-555-1234",
             country="USA", address="789 Pine Street", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Mock LLM response showing moderate confidence
@@ -470,7 +468,7 @@ class TestLLMAccuracyAndDecisionLogic:
             firstname="Sarah", lastname="Wilson", age=32,
             email="sarah.wilson@email.com", phone="+1-555-5678",
             country="USA", address="321 Elm St", gender="Female",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Create multiple candidates
@@ -478,14 +476,14 @@ class TestLLMAccuracyAndDecisionLogic:
             firstname="Sara", lastname="Wilson", age=32,
             email="sara.wilson@email.com", phone="+1-555-5678",
             country="USA", address="321 Elm Street", gender="Female",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         candidate2 = CustomerRecord(
             firstname="Sarah", lastname="Williams", age=33,
             email="sarah.williams@email.com", phone="+1-555-9876",
             country="USA", address="654 Oak Rd", gender="Female",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Mock LLM response selecting the better match (candidate1)

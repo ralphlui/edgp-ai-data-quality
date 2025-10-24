@@ -40,7 +40,7 @@ class TestMainModule:
                     "country": "USA",
                     "address": "123 Main Street",
                     "gender": "Male",
-                    "status": "active",
+                    
                     "id": str(uuid4()),
                     "organization_id": str(uuid4()),
                     "policy_id": str(uuid4()),
@@ -197,7 +197,7 @@ class TestMainModule:
                     "country": "USA",
                     "address": "123 Main St",
                     "gender": "Male",
-                    "status": "active",
+                    
                     "id": str(uuid4()),
                     "organization_id": str(uuid4()),
                     "policy_id": str(uuid4()),
@@ -332,7 +332,7 @@ class TestMainModule:
                         "country": "USA",
                         "address": "123 Main St",
                         "gender": "Male",
-                        "status": "active",
+                        
                         "id": str(uuid4()),
                         "organization_id": str(uuid4()),
                         "policy_id": str(uuid4()),

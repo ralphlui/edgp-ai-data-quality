@@ -168,7 +168,6 @@ class DynamoDBService:
         # Add additional fields that are available in the CustomerRecord model
         item['id'] = str(record.id)
         item['organization_id'] = str(record.organization_id)
-        item['status'] = record.status
         item['gender'] = record.gender
         
         try:

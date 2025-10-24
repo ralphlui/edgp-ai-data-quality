@@ -40,7 +40,7 @@ class TestUtilityFunctions:
             country="USA",
             address="123 Main Street",
             gender="Male",
-            status="active",
+            
             id=uuid4(),
             organization_id=uuid4(),
             policy_id=uuid4(),
@@ -74,7 +74,6 @@ class TestUtilityFunctions:
             country=sample_customer_record.country,
             address=sample_customer_record.address,
             gender=sample_customer_record.gender,
-            status=sample_customer_record.status,
             id=uuid4(),  # Different ID shouldn't affect hash
             organization_id=sample_customer_record.organization_id,
             policy_id=uuid4(),
@@ -108,7 +107,7 @@ class TestUtilityFunctions:
             country="USA",
             address="123 Main Street",
             gender="Male",
-            status="active",
+            
             id=uuid4(),
             organization_id=uuid4(),
             policy_id=uuid4(),
@@ -158,7 +157,7 @@ class TestUtilityFunctions:
             country="USA",
             address="123 Main St",
             gender="Male",
-            status="active",
+            
             id=uuid4(),
             organization_id=uuid4(),
             policy_id=uuid4(),
@@ -188,7 +187,6 @@ class TestUtilityFunctions:
             country=sample_customer_record.country,
             address=sample_customer_record.address,
             gender=sample_customer_record.gender,
-            status=sample_customer_record.status,
             id=uuid4(),
             organization_id=uuid4(),
             policy_id=uuid4(),
@@ -214,7 +212,7 @@ SAMPLE_RECORDS = [
         "country": "USA",
         "address": "123 Main St, New York, NY 10001",
         "gender": "Male",
-        "status": "Active",
+        
         "id": uuid4(),
         "organization_id": uuid4()
     },
@@ -227,7 +225,7 @@ SAMPLE_RECORDS = [
         "country": "USA",
         "address": "456 Oak Ave, Los Angeles, CA 90001",
         "gender": "Female",
-        "status": "Active",
+        
         "id": uuid4(),
         "organization_id": uuid4()
     }

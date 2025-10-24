@@ -29,14 +29,14 @@ class TestLLMAccuracyBenchmark:
             firstname="John", lastname="Smith", age=35,
             email="john.smith@example.com", phone="+1-555-0123",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         case1_candidate = CustomerRecord(
             firstname="John", lastname="Smith", age=35,
             email="john.smith@example.com", phone="+1-555-0123",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Test Case 2: Clear Non-Duplicate (should score < 0.3)
@@ -44,14 +44,14 @@ class TestLLMAccuracyBenchmark:
             firstname="Alice", lastname="Johnson", age=28,
             email="alice.johnson@email.com", phone="+1-555-1111",
             country="USA", address="456 Oak Ave", gender="Female",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         case2_candidate = CustomerRecord(
             firstname="Bob", lastname="Wilson", age=45,
             email="bob.wilson@company.com", phone="+1-555-9999", 
             country="Canada", address="789 Pine St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Test Case 3: Name Variation (should score 0.6-0.8)
@@ -59,14 +59,14 @@ class TestLLMAccuracyBenchmark:
             firstname="Robert", lastname="Davis", age=40,
             email="robert.davis@work.com", phone="+1-555-2222",
             country="USA", address="321 Elm St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         case3_candidate = CustomerRecord(
             firstname="Bob", lastname="Davis", age=40,
             email="bob.davis@work.com", phone="+1-555-2222",
             country="USA", address="321 Elm Street", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Test Case 4: Ambiguous Case (should score 0.4-0.6)
@@ -74,14 +74,14 @@ class TestLLMAccuracyBenchmark:
             firstname="Sarah", lastname="Brown", age=30,
             email="sarah.brown@email.com", phone="+1-555-3333",
             country="USA", address="654 Maple Ave", gender="Female",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         case4_candidate = CustomerRecord(
             firstname="Sarah", lastname="Brown", age=32,
             email="s.brown@different.com", phone="+1-555-4444",
             country="USA", address="987 Oak Dr", gender="Female",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         return [
@@ -270,14 +270,14 @@ class TestLLMEdgeCases:
             firstname="John", lastname="Doe", age=30,
             email="john@example.com", phone="+1-555-0000",
             country="", address="", gender="",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         complete_record = CustomerRecord(
             firstname="John", lastname="Doe", age=30,
             email="john@example.com", phone="+1-555-0000",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # This test would verify the system handles missing optional fields gracefully
@@ -292,14 +292,14 @@ class TestLLMEdgeCases:
             firstname="José", lastname="O'Connor-Smith", age=35,
             email="jose.oconnor@email.com", phone="+1-555-1234",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         similar_record = CustomerRecord(
             firstname="Jose", lastname="OConnor Smith", age=35,
             email="jose.oconnor@email.com", phone="+1-555-1234",
             country="USA", address="123 Main St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Both records should be valid and comparable
@@ -325,7 +325,7 @@ class TestLLMEdgeCases:
                 firstname="Test", lastname="User", age=30,
                 email="test@example.com", phone="+1-555-0000",
                 country="USA", address=address, gender="Male",
-                status="active", id=uuid4(), organization_id=base_org_id
+                id=uuid4(), organization_id=base_org_id
             )
             records.append(record)
         
@@ -346,7 +346,7 @@ class TestModelPerformanceMetrics:
             firstname="Performance", lastname="Test", age=30,
             email="perf@test.com", phone="+1-555-0000",
             country="USA", address="123 Test St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         
         # Time record creation
@@ -356,7 +356,7 @@ class TestModelPerformanceMetrics:
             firstname="Performance", lastname="Test", age=30,
             email="perf@test.com", phone="+1-555-0000",
             country="USA", address="123 Test St", gender="Male",
-            status="active", id=uuid4(), organization_id=uuid4()
+            id=uuid4(), organization_id=uuid4()
         )
         end_time = time.time()
         
@@ -376,7 +376,7 @@ class TestModelPerformanceMetrics:
                 firstname=f"User{i}", lastname=f"Test{i}", age=20 + (i % 50),
                 email=f"user{i}@test.com", phone=f"+1-555-{i:04d}",
                 country="USA", address=f"{i} Test St", gender="Male",
-                status="active", id=uuid4(), organization_id=uuid4()
+                id=uuid4(), organization_id=uuid4()
             )
             records.append(record)
         

@@ -20,7 +20,6 @@ class CustomerRecord(BaseModel):
     country: str = Field(..., description="Customer country")
     address: str = Field(..., description="Customer address")
     gender: str = Field(..., description="Customer gender")
-    status: str = Field(..., description="Customer status")
     id: UUID = Field(..., description="Customer unique identifier (UUID)")
     organization_id: UUID = Field(..., description="Organization unique identifier (UUID)")
 

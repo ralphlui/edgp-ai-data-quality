@@ -89,7 +89,6 @@ class DeduplicationEngine:
                     country=item['country'],
                     address=item['address'],
                     gender=item['gender'],
-                    status=item['status'],
                     id=item['id'],
                     organization_id=item['organization_id']
                 )
