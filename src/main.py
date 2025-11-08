@@ -6,6 +6,7 @@ Main entry point for the Customer Record Deduplication AI Agent.
 import json
 import time
 import logging
+import os
 from typing import Dict, Any
 import boto3
 from botocore.exceptions import ClientError

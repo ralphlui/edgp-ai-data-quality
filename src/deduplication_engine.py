@@ -271,7 +271,7 @@ class DeduplicationEngine:
                 # Check if this candidate is the best match according to GPT
                 if best_match_index is not None and i == best_match_index:
                     # This is the candidate GPT analyzed
-                    if gpt_score > config.GPT_CONFIDENCE_THRESHOLD:
+                    if gpt_score >= config.GPT_CONFIDENCE_THRESHOLD:
                         # GPT found a duplicate match (score > threshold)
                         duplicate_flag = True
                         confidence_score = gpt_score

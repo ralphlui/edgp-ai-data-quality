@@ -17,6 +17,9 @@ pytest==7.4.3
 pytest-cov==4.1.0
 pytest-mock==3.12.0
 
+# LangSmith monitoring
+langsmith>=0.1.0
+
 # Environment management
 python-dotenv==1.0.0
 

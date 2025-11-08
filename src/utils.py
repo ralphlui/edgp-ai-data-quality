@@ -200,10 +200,11 @@ Find the ONE candidate that is most likely to be the same person as the new reco
 3. Same organizational context
 4. Accounting for data entry variations and typos
 
-Return JSON only:
+Return your final answer in **strict JSON only**, with no extra commentary or text.
+The JSON must follow exactly this schema:
 {
   "best_match_index": 0,   // index of the candidate that is the best duplicate, or null if no good match
-  "score": 0.85,           // confidence as a float between 0.0 (no match) and 1.0 (definitely same person)
+  "score": 0.75,           // confidence as a float between 0.0 (no match) and 1.0 (definitely same person)
   "reason": "Exact email and phone match with similar name spelling" // short explanation of why
 }
 """

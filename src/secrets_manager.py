@@ -4,10 +4,11 @@ AWS Secrets Manager service for secure configuration management.
 
 import json
 import logging
+import os
 import boto3
 from botocore.exceptions import ClientError
 from typing import Optional, Dict, Any
-import config
+from . import config
 
 logger = logging.getLogger(__name__)
 
@@ -132,4 +133,45 @@ def get_openai_api_key() -> Optional[str]:
             
     except Exception as e:
         logger.error(f"❌ ERROR: Exception while retrieving API key: {e}")
+        return None
+
+
+def get_langsmith_api_key() -> str:
+    """
+    Get LangSmith API key from AWS Secrets Manager based on environment.
+    
+    Returns:
+        LangSmith API key string or None if not found/not configured
+    """
+    app_env = os.getenv('APP_ENV', 'development').lower()
+    
+    # Determine secret name based on environment
+    if app_env in ['dev', 'development']:
+        secret_name = 'sit/edgp/secret'
+    elif app_env == 'sit':
+        secret_name = 'sit/edgp/secret'
+    elif app_env in ['prd', 'production']:
+        secret_name = 'prod/edgp/secret'
+    else:
+        logger.warning(f"⚠️ WARNING: Unknown environment '{app_env}', defaulting to SIT secret")
+        secret_name = 'sit/edgp/secret'
+    
+    logger.info(f"🔐 THINK: Retrieving LangSmith API key from secret '{secret_name}' for environment '{app_env}'")
+    
+    try:
+        secrets_service = SecretsManagerService()
+        api_key = secrets_service.get_secret_value(secret_name, 'langsmith_api_key')
+        
+        if api_key:
+            logger.info("✅ SUCCESS: LangSmith API key retrieved from AWS Secrets Manager")
+            # Mask the key in logs for security
+            masked_key = f"{api_key[:8]}...{api_key[-4:]}" if len(api_key) > 12 else "***"
+            logger.debug(f"🔐 OBSERVE: LangSmith API key retrieved: {masked_key}")
+            return api_key
+        else:
+            logger.info("ℹ️ INFO: LangSmith API key not found in Secrets Manager (optional)")
+            return None
+            
+    except Exception as e:
+        logger.warning(f"⚠️ WARNING: Exception while retrieving LangSmith API key: {e}")
         return None
